@@ -4,11 +4,13 @@ load_dotenv()
 import logging
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
 import handlers
+from keep_alive import keep_alive
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
 )
 def main():
+    keep_alive()
     token = os.getenv("TELEGRAM_BOT_TOKEN")
     if not token:
         print("Error: TELEGRAM_BOT_TOKEN not found in environment variables.")
